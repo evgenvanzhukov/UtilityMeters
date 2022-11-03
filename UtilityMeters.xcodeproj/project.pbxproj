@@ -7,25 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6712A9F429141C0F008F2937 /* MetersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712A9F329141C0F008F2937 /* MetersCoordinator.swift */; };
+		6712A9F629142216008F2937 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712A9F529142216008F2937 /* EventType.swift */; };
 		6789DD772912CFAE00A2648F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD762912CFAE00A2648F /* AppDelegate.swift */; };
 		6789DD792912CFAE00A2648F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD782912CFAE00A2648F /* SceneDelegate.swift */; };
-		6789DD7B2912CFAE00A2648F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD7A2912CFAE00A2648F /* ViewController.swift */; };
+		6789DD7B2912CFAE00A2648F /* MetersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD7A2912CFAE00A2648F /* MetersViewController.swift */; };
 		6789DD7E2912CFAE00A2648F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6789DD7C2912CFAE00A2648F /* Main.storyboard */; };
 		6789DD812912CFAE00A2648F /* UtilityMeters.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD7F2912CFAE00A2648F /* UtilityMeters.xcdatamodeld */; };
 		6789DD832912CFB000A2648F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6789DD822912CFB000A2648F /* Assets.xcassets */; };
 		6789DD862912CFB000A2648F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6789DD842912CFB000A2648F /* LaunchScreen.storyboard */; };
+		6789DD8E2912D0B800A2648F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD8D2912D0B800A2648F /* SettingsViewController.swift */; };
+		6789DD902912D0D200A2648F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD8F2912D0D200A2648F /* DetailViewController.swift */; };
+		6789DD992912D17900A2648F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD982912D17900A2648F /* Setting.swift */; };
+		6789DD9B2912D21C00A2648F /* MeterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD9A2912D21C00A2648F /* MeterType.swift */; };
+		6789DD9D2912D72500A2648F /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD9C2912D72500A2648F /* SettingsManager.swift */; };
+		6789DD9F2912D79900A2648F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD9E2912D79900A2648F /* AppCoordinator.swift */; };
+		6789DDA12912DAE200A2648F /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DDA02912DAE200A2648F /* ViewControllerExtensions.swift */; };
+		6789DDA32912DB8300A2648F /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DDA22912DB8300A2648F /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6712A9F329141C0F008F2937 /* MetersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersCoordinator.swift; sourceTree = "<group>"; };
+		6712A9F529142216008F2937 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		6789DD732912CFAE00A2648F /* UtilityMeters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityMeters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6789DD762912CFAE00A2648F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6789DD782912CFAE00A2648F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6789DD7A2912CFAE00A2648F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6789DD7A2912CFAE00A2648F /* MetersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersViewController.swift; sourceTree = "<group>"; };
 		6789DD7D2912CFAE00A2648F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6789DD802912CFAE00A2648F /* UtilityMeters.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UtilityMeters.xcdatamodel; sourceTree = "<group>"; };
 		6789DD822912CFB000A2648F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6789DD852912CFB000A2648F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6789DD872912CFB000A2648F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6789DD8D2912D0B800A2648F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6789DD8F2912D0D200A2648F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		6789DD982912D17900A2648F /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		6789DD9A2912D21C00A2648F /* MeterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterType.swift; sourceTree = "<group>"; };
+		6789DD9C2912D72500A2648F /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		6789DD9E2912D79900A2648F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		6789DDA02912DAE200A2648F /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		6789DDA22912DB8300A2648F /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +78,14 @@
 		6789DD752912CFAE00A2648F /* UtilityMeters */ = {
 			isa = PBXGroup;
 			children = (
+				6789DD972912D15600A2648F /* Extensions */,
+				6789DD962912D14C00A2648F /* Protocols */,
+				6789DD942912D12D00A2648F /* CoreData */,
+				6789DD932912D12400A2648F /* Models */,
+				6789DD922912D11B00A2648F /* Coordinators */,
+				6789DD912912D10200A2648F /* ViewControllers */,
 				6789DD762912CFAE00A2648F /* AppDelegate.swift */,
 				6789DD782912CFAE00A2648F /* SceneDelegate.swift */,
-				6789DD7A2912CFAE00A2648F /* ViewController.swift */,
 				6789DD7C2912CFAE00A2648F /* Main.storyboard */,
 				6789DD822912CFB000A2648F /* Assets.xcassets */,
 				6789DD842912CFB000A2648F /* LaunchScreen.storyboard */,
@@ -68,6 +93,67 @@
 				6789DD7F2912CFAE00A2648F /* UtilityMeters.xcdatamodeld */,
 			);
 			path = UtilityMeters;
+			sourceTree = "<group>";
+		};
+		6789DD912912D10200A2648F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6789DD7A2912CFAE00A2648F /* MetersViewController.swift */,
+				6789DD8D2912D0B800A2648F /* SettingsViewController.swift */,
+				6789DD8F2912D0D200A2648F /* DetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6789DD922912D11B00A2648F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				6789DD9E2912D79900A2648F /* AppCoordinator.swift */,
+				6712A9F329141C0F008F2937 /* MetersCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		6789DD932912D12400A2648F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6789DD982912D17900A2648F /* Setting.swift */,
+				6789DD9A2912D21C00A2648F /* MeterType.swift */,
+				6789DD9C2912D72500A2648F /* SettingsManager.swift */,
+				6712A9F529142216008F2937 /* EventType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6789DD942912D12D00A2648F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6789DD952912D13700A2648F /* Models */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		6789DD952912D13700A2648F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6789DD962912D14C00A2648F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6789DDA22912DB8300A2648F /* Protocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6789DD972912D15600A2648F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6789DDA02912DAE200A2648F /* ViewControllerExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +227,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6789DD7B2912CFAE00A2648F /* ViewController.swift in Sources */,
+				6712A9F629142216008F2937 /* EventType.swift in Sources */,
+				6789DDA12912DAE200A2648F /* ViewControllerExtensions.swift in Sources */,
+				6789DD7B2912CFAE00A2648F /* MetersViewController.swift in Sources */,
+				6789DD9B2912D21C00A2648F /* MeterType.swift in Sources */,
+				6789DDA32912DB8300A2648F /* Protocols.swift in Sources */,
+				6789DD9F2912D79900A2648F /* AppCoordinator.swift in Sources */,
 				6789DD772912CFAE00A2648F /* AppDelegate.swift in Sources */,
 				6789DD812912CFAE00A2648F /* UtilityMeters.xcdatamodeld in Sources */,
+				6789DD902912D0D200A2648F /* DetailViewController.swift in Sources */,
+				6789DD992912D17900A2648F /* Setting.swift in Sources */,
+				6789DD8E2912D0B800A2648F /* SettingsViewController.swift in Sources */,
 				6789DD792912CFAE00A2648F /* SceneDelegate.swift in Sources */,
+				6712A9F429141C0F008F2937 /* MetersCoordinator.swift in Sources */,
+				6789DD9D2912D72500A2648F /* SettingsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Zhu.UtilityMeters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -314,7 +410,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Zhu.UtilityMeters;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
