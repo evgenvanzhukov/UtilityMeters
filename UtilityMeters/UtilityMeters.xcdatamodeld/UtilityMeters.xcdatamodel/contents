@@ -8,12 +8,13 @@
     </entity>
     <entity name="Report" representedClassName=".Report" syncable="YES">
         <attribute name="calculating" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="meters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meter"/>
     </entity>
     <elements>
         <element name="Meter" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Report" positionX="-54" positionY="18" width="128" height="103"/>
+        <element name="Report" positionX="-54" positionY="18" width="128" height="118"/>
     </elements>
 </model>

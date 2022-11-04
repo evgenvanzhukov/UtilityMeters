@@ -139,7 +139,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="electoRateField" destination="sjZ-9z-S9q" id="w0h-VS-12r"/>
+                        <outlet property="electroRateField" destination="sjZ-9z-S9q" id="w0h-VS-12r"/>
                         <outlet property="electroUnitField" destination="n3Z-zc-j3g" id="pqC-U0-jby"/>
                         <outlet property="gasRateField" destination="Tqj-kT-TAj" id="2s4-5P-3yc"/>
                         <outlet property="gasUnitField" destination="9Wm-K0-ibm" id="zp7-mt-NZa"/>
@@ -183,7 +183,11 @@
                                                 <action selector="settingsBtnPressed:" destination="a5p-il-OPK" id="iQ6-Tl-4JH"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="adA-v3-jdE"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="adA-v3-jdE">
+                                            <connections>
+                                                <action selector="addBtnPressed:" destination="a5p-il-OPK" id="KLv-co-1nS"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

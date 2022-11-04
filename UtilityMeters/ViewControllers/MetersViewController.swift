@@ -9,14 +9,21 @@
 import UIKit
 
 class MetersViewController: UIViewController, CreateAble {
-
+    
+    var coordinator : Coordinator?
+    
+    
     @IBAction func settingsBtnPressed(_ sender: Any) {
         self.dismiss(animated: false, completion: {
             self.coordinator?.eventOccured(with: .settingsBtnPressed)
         })
     }
     
-    var coordinator : Coordinator?
+    @IBAction func addBtnPressed(_ sender: Any) {
+        self.coordinator?.eventOccured(with: .addMeters(model: nil))
+    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

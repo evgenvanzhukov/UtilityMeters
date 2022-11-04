@@ -39,49 +39,81 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "777BC263-806C-49D4-B5D3-808E624CFAC2"
+            uuid = "78EBF31B-F770-4236-80B5-A5BDD3497BB6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UtilityMeters/ViewControllers/MetersViewController.swift"
+            filePath = "UtilityMeters/ViewControllers/SettingsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "settingsBtnPressed(_:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "saveAndClose()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "777BC263-806C-49D4-B5D3-808E624CFAC2 - 6b6cf37622281f89"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UtilityMeters.MetersViewController.settingsBtnPressed(Any) -&gt; ()"
-                  moduleName = "UtilityMeters"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/e1/Desktop/UtilityMeters/UtilityMeters/ViewControllers/MetersViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "777BC263-806C-49D4-B5D3-808E624CFAC2 - e61354a1f75fbd8c"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in UtilityMeters.MetersViewController.settingsBtnPressed(Any) -&gt; ()"
-                  moduleName = "UtilityMeters"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/e1/Desktop/UtilityMeters/UtilityMeters/ViewControllers/MetersViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "15"
-                  endingLineNumber = "15"
-                  offsetFromSymbolStart = "55">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "002EF923-3CFC-42F1-8325-DE8B81DCE2C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UtilityMeters/ViewControllers/SettingsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "940A2482-27F0-4F10-B8DA-33EF9A26A711"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UtilityMeters/ViewControllers/DetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "saveBtnPressed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA82EBF3-5291-4A01-8BC7-F67190D51501"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UtilityMeters/ViewControllers/DetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "saveBtnPressed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "942D20E7-4D3D-4982-89C5-7C9055DB0810"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UtilityMeters/CoreData/CoreDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "addReport(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

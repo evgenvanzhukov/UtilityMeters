@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6712A9F429141C0F008F2937 /* MetersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712A9F329141C0F008F2937 /* MetersCoordinator.swift */; };
 		6712A9F629142216008F2937 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712A9F529142216008F2937 /* EventType.swift */; };
+		677A5DB02914FAD500027606 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677A5DAF2914FAD500027606 /* DetailViewModel.swift */; };
 		6789DD772912CFAE00A2648F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD762912CFAE00A2648F /* AppDelegate.swift */; };
 		6789DD792912CFAE00A2648F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD782912CFAE00A2648F /* SceneDelegate.swift */; };
 		6789DD7B2912CFAE00A2648F /* MetersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789DD7A2912CFAE00A2648F /* MetersViewController.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		6712A9F329141C0F008F2937 /* MetersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetersCoordinator.swift; sourceTree = "<group>"; };
 		6712A9F529142216008F2937 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
+		677A5DAF2914FAD500027606 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		6789DD732912CFAE00A2648F /* UtilityMeters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UtilityMeters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6789DD762912CFAE00A2648F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6789DD782912CFAE00A2648F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		677A5DAE2914FABA00027606 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				677A5DAF2914FAD500027606 /* DetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		6789DD6A2912CFAE00A2648F = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +98,7 @@
 		6789DD752912CFAE00A2648F /* UtilityMeters */ = {
 			isa = PBXGroup;
 			children = (
+				677A5DAE2914FABA00027606 /* ViewModels */,
 				6789DD972912D15600A2648F /* Extensions */,
 				6789DD962912D14C00A2648F /* Protocols */,
 				6789DD942912D12D00A2648F /* CoreData */,
@@ -245,6 +256,7 @@
 				6712A9F629142216008F2937 /* EventType.swift in Sources */,
 				67F16C7C29142EE600C6EA70 /* CoreDataManager.swift in Sources */,
 				6789DDA12912DAE200A2648F /* ViewControllerExtensions.swift in Sources */,
+				677A5DB02914FAD500027606 /* DetailViewModel.swift in Sources */,
 				6789DD7B2912CFAE00A2648F /* MetersViewController.swift in Sources */,
 				6789DD9B2912D21C00A2648F /* MeterType.swift in Sources */,
 				67F16C8B2914327F00C6EA70 /* Report+CoreDataClass.swift in Sources */,

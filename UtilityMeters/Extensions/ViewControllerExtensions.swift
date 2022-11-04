@@ -10,3 +10,11 @@ extension CreateAble where Self : UIViewController {
         return sb.instantiateViewController(identifier: id) as! Self
     }
 }
+
+extension UIViewController {
+    
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

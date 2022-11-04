@@ -10,6 +10,6 @@ import Foundation
 
 enum EventType {
     case settingsBtnPressed
-    case addMeters
-    case editMeters(model: Any?) //TODO concrete class for Meter
+    case addMeters(model: DetailViewModel?)
+    case editMeters(model: DetailViewModel)
 }

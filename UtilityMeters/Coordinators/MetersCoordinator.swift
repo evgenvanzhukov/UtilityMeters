@@ -10,9 +10,21 @@ import UIKit
 
 class MetersCoordinator : Coordinator {
     
+    let coreData = CoreDataManager()
     
     func eventOccured(with event: EventType) {
-        
+        switch event {
+        case .addMeters(let meters):
+            if let model = meters {
+                coreData.addReport(model)
+                
+                navigationControoler.popViewController(animated: true)
+            }
+            
+            break
+        default:
+            return
+        }
     }
     
     

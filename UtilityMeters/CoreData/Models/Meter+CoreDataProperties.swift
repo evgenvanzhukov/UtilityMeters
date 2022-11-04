@@ -2,7 +2,7 @@
 //  Meter+CoreDataProperties.swift
 //  UtilityMeters
 //
-//  Created by Evgen on 03/11/2022.
+//  Created by Evgen on 04/11/2022.
 //  Copyright © 2022 Evgen. All rights reserved.
 //
 //

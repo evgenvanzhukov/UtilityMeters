@@ -26,11 +26,17 @@ class AppCoordinator: Coordinator {
     func eventOccured(with event: EventType) {
         
         switch event {
+            
         case .settingsBtnPressed:
-            let vc = SettingsViewController.createObject()
-            vc.coordinator = self
-            navigationControoler.pushViewController(vc, animated: false)
+            let settingsController = SettingsViewController.createObject()
+            settingsController.coordinator = self
+            navigationControoler.pushViewController(settingsController, animated: false)
             break
+            
+        case .addMeters:
+            let detailsController = DetailViewController.createObject()
+            detailsController.coordinator = MetersCoordinator(navigationControoler)
+            navigationControoler.pushViewController(detailsController, animated: true)
             
         default:
             return

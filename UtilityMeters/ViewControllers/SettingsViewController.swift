@@ -12,6 +12,7 @@ class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate 
 
     var coordinator : Coordinator?
     var settingsManager = SettingsManager()
+    var viewModel: [Setting]?
     
     @IBAction func saveBtnPressed(_ sender: Any) {
         saveAndClose()
@@ -23,7 +24,7 @@ class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate 
     @IBOutlet weak var waterRateField: UITextField!
     @IBOutlet weak var waterUnitField: UITextField!
     
-    @IBOutlet weak var electoRateField: UITextField!
+    @IBOutlet weak var electroRateField: UITextField!
     @IBOutlet weak var electroUnitField: UITextField!
     
 
@@ -31,35 +32,51 @@ class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let settings = settingsManager.getSettings(),
+            let gasSetting = settings.first(where: {$0.meterType == .gas}),
+            let waterSetting = settings.first(where: {$0.meterType == .water}),
+            let electroSetting = settings.first(where: {$0.meterType == .electro})  {
+            
+            self.viewModel = settings
+            
+            gasRateField.text = "\(gasSetting.rate)"
+            gasUnitField.text = gasSetting.meterUnits
+            
+            waterRateField.text = "\(waterSetting.rate)"
+            waterUnitField.text = waterSetting.meterUnits
+            
+            electroRateField.text = "\(electroSetting.rate)"
+            electroUnitField.text = electroSetting.meterUnits
+        }
+        else {
+            viewModel = [Setting]()
+        }
+
+        
         gasUnitField.delegate = self
         gasRateField.delegate = self
         
         waterRateField.delegate = self
         waterUnitField.delegate = self
         
-        electoRateField.delegate = self
+        electroRateField.delegate = self
         electroUnitField.delegate = self
     }
     
     func saveAndClose() {
         
-        var settings = [Setting]()
-        settings.append(
+        viewModel = [Setting]()
+        viewModel!.append(
             Setting(meterName: "Газ", meterType: .gas, meterUnits: gasUnitField!.text!, rate: Decimal(string: gasRateField!.text!) ?? 0))
-        settings.append(
+        viewModel!.append(
             Setting(meterName: "Вода", meterType: .water, meterUnits: waterUnitField!.text!, rate: Decimal(string:waterRateField!.text!) ?? 0))
-        settings.append(
-            Setting(meterName: "Электр.", meterType: .electro, meterUnits: electroUnitField!.text!, rate: Decimal(string: electoRateField!.text!) ?? 0))
+        viewModel!.append(
+            Setting(meterName: "Электр.", meterType: .electro, meterUnits: electroUnitField!.text!, rate: Decimal(string: electroRateField!.text!) ?? 0))
         
-        settingsManager.setSettings(value: settings)
+        settingsManager.setSettings(value: viewModel!)
         
-        self.dismiss(animated: false, completion: nil)
+        //self.dismiss(animated: false, completion: nil)
         
         coordinator?.navigationControoler.popViewController(animated: true)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }

@@ -2,7 +2,7 @@
 //  Report+CoreDataProperties.swift
 //  UtilityMeters
 //
-//  Created by Evgen on 03/11/2022.
+//  Created by Evgen on 04/11/2022.
 //  Copyright © 2022 Evgen. All rights reserved.
 //
 //
@@ -18,6 +18,7 @@ extension Report {
     }
 
     @NSManaged public var calculating: String?
+    @NSManaged public var date: Date?
     @NSManaged public var id: Int32
     @NSManaged public var name: String?
     @NSManaged public var meters: NSSet?

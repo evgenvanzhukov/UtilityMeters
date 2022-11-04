@@ -11,7 +11,12 @@ import CoreData
 
 class CoreDataManager {
     // MARK: - Core Data stack
-
+    var fetchResultController: NSFetchedResultsController<Report>
+    
+    init() {
+        fetchResultController = NSFetchedResultsController<Report>()
+    }
+    
     lazy var persistentContainer: NSPersistentContainer = {
 
         let container = NSPersistentContainer(name: "UtilityMeters")
@@ -38,4 +43,33 @@ class CoreDataManager {
             }
         }
     }
+    
+    func addReport(_ details: DetailViewModel) {
+        let report = Report(context: persistentContainer.viewContext)
+        
+        let gasMeter = Meter(context: persistentContainer.viewContext)
+        gasMeter.type = Int16(MeterType.gas.rawValue)
+        gasMeter.date = details.date
+        gasMeter.value = details.gasValue as NSDecimalNumber?
+        report.addToMeters(gasMeter)
+        
+        let waterMeter = Meter(context: persistentContainer.viewContext)
+        waterMeter.type = Int16(MeterType.water.rawValue)
+        waterMeter.date = details.date
+        waterMeter.value = details.waterValue as NSDecimalNumber?
+        report.addToMeters(waterMeter)
+        
+        let electroMeter = Meter(context: persistentContainer.viewContext)
+        electroMeter.type = Int16(MeterType.water.rawValue)
+        electroMeter.date = details.date
+        electroMeter.value = details.electroValue as NSDecimalNumber?
+        report.addToMeters(electroMeter)
+        
+        report.date = details.date
+        report.calculating = details.calculating
+        
+        
+        saveContext()
+    }
+    
 }
