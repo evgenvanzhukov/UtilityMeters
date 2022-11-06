@@ -85,4 +85,9 @@ class CoreDataManager {
         saveContext()
     }
     
+    func deleteReport(_ entity: Report) {
+        CoreDataManager.persistentContainer.viewContext.delete(entity)
+        saveContext()
+    }
+    
 }

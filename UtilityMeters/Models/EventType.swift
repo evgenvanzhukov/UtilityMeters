@@ -12,4 +12,5 @@ enum EventType {
     case settingsBtnPressed
     case addMeters(model: DetailViewModel?)
     case editMeters(model: DetailViewModel)
+    case deleteReport(model: Report)
 }

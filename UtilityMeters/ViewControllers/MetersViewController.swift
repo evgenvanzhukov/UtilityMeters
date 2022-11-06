@@ -68,11 +68,29 @@ class MetersViewController: UIViewController, CreateAble, UITableViewDataSource,
                 tableView.insertRows(at: [indexPath], with: .automatic)
             }
             break
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
 
         default:
             return
         }
 
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            let report = fetchResultController?.object(at: indexPath)
+            coordinator?.eventOccured(with: .deleteReport(model: report!))
+            tableView.reloadData()
+            return
+        default:
+            return
+        }
     }
 }
 

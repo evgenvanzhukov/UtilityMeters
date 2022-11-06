@@ -13,6 +13,8 @@ class AppCoordinator: Coordinator {
     
     var navigationControoler: UINavigationController
     
+    let coreData = CoreDataManager()
+
     var settings: [Setting]? // ViewMidel ?
     
     init(_ navigationController: UINavigationController) {
@@ -37,6 +39,12 @@ class AppCoordinator: Coordinator {
             let detailsController = DetailViewController.createObject()
             detailsController.coordinator = MetersCoordinator(navigationControoler)
             navigationControoler.pushViewController(detailsController, animated: true)
+            break
+            
+        case .deleteReport(let report):
+            coreData.deleteReport(report)
+            break
+            
             
         default:
             return
