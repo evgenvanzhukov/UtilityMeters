@@ -64,15 +64,19 @@ class AppCoordinator: Coordinator {
         navigationControoler.pushViewController(viewController, animated: true)
     }
     
+    
     func showMetersController() {
         let viewController = MetersViewController.createObject()
         viewController.coordinator = self
-        //navigationControoler.viewControllers.removeAll()
+        let fetchController = CoreDataManager().fetchResultController
+        fetchController.delegate = viewController
+        viewController.fetchResultController = fetchController
+
         navigationControoler.pushViewController(viewController, animated: true)
     }
     
-    func coordinate(_ viewController: UIViewController) {
-        
+    func closeSettings() {
+        navigationControoler.viewControllers.popLast()
+        showMetersController()
     }
-    
 }

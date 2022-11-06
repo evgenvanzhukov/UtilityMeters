@@ -12,12 +12,19 @@ class MetersCoordinator : Coordinator {
     
     let coreData = CoreDataManager()
     
+    var navigationControoler: UINavigationController
+    
+    init(_ navContr: UINavigationController) {
+        self.navigationControoler = navContr
+    }
+    
+    
+    
     func eventOccured(with event: EventType) {
         switch event {
         case .addMeters(let meters):
             if let model = meters {
                 coreData.addReport(model)
-                
                 navigationControoler.popViewController(animated: true)
             }
             
@@ -31,11 +38,7 @@ class MetersCoordinator : Coordinator {
 
     
     
-    var navigationControoler: UINavigationController
-    
-    init(_ navContr: UINavigationController) {
-        self.navigationControoler = navContr
-    }
+
     
     func start() {
         

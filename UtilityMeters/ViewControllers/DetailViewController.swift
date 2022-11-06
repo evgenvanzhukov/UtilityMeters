@@ -12,12 +12,17 @@ class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
 
     var coordinator : Coordinator?
     var viewModel: DetailViewModel?
+
     
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var waterTextField: UITextField!
     @IBOutlet weak var gasTextField: UITextField!
     @IBOutlet weak var electroTextField: UITextField!
     @IBOutlet weak var comentLabel: UILabel!
     
+    @IBAction func datePickerChanged(_ sender: Any) {
+        viewModel?.date = datePicker.date
+    }
     
     @IBAction func saveBtnPressed() {
         // todo: check add or edit ??
@@ -34,6 +39,7 @@ class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
         model.gasValue = gasValue
         model.waterValue = waterValue
         model.electroValue = electroValue
+        model.date = datePicker.date
         self.coordinator?.eventOccured(with: .addMeters(model: model))
     }
     
@@ -49,12 +55,14 @@ class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
             gasTextField.text = "\(model.gasValue ?? 0)"
             waterTextField.text = "\(model.waterValue ?? 0)"
             electroTextField.text = "\(model.electroValue ?? 0)"
+            datePicker.date = model.date ?? Date()
         }
         else {
-            viewModel = DetailViewModel(gasValue: 0, waterValue: 0, electroValue: 0)
+            viewModel = DetailViewModel(gasValue: 0, waterValue: 0, electroValue: 0, date: Date())
+            
             //todo: set from last meters
         }
-        
+        datePicker.date = viewModel?.date ?? Date()
         gasTextField.delegate = self
         waterTextField.delegate = self
         electroTextField.delegate = self

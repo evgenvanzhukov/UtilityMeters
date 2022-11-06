@@ -75,8 +75,10 @@ class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate 
         
         settingsManager.setSettings(value: viewModel!)
         
-        //self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false, completion: {
+            (self.coordinator as? AppCoordinator)?.closeSettings()
+        })
         
-        coordinator?.navigationControoler.popViewController(animated: true)
+        
     }
 }
