@@ -1,5 +1,6 @@
 
 import UIKit
+import CoreData
 
 extension CreateAble where Self : UIViewController {
     
@@ -16,5 +17,12 @@ extension UIViewController {
     @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension Array where Element == Meter {
+    func first(_ type: MeterType) -> Meter? {
+        // TODO: 
+        return first(where: {$0.type == type.rawValue})
     }
 }

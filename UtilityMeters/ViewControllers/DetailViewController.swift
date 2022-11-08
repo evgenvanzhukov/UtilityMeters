@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
 
-    var coordinator : Coordinator?
+    weak var coordinator : Coordinator?
     var viewModel: DetailViewModel?
 
     

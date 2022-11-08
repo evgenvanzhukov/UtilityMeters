@@ -30,6 +30,8 @@
 		67F16C8A2914327F00C6EA70 /* Meter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F16C862914327F00C6EA70 /* Meter+CoreDataProperties.swift */; };
 		67F16C8B2914327F00C6EA70 /* Report+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F16C872914327F00C6EA70 /* Report+CoreDataClass.swift */; };
 		67F16C8C2914327F00C6EA70 /* Report+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F16C882914327F00C6EA70 /* Report+CoreDataProperties.swift */; };
+		67FD863D29192295004CD5CF /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67FD863B29192295004CD5CF /* ReportCell.swift */; };
+		67FD863E29192295004CD5CF /* ReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67FD863C29192295004CD5CF /* ReportCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		67F16C862914327F00C6EA70 /* Meter+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meter+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		67F16C872914327F00C6EA70 /* Report+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Report+CoreDataClass.swift"; sourceTree = "<group>"; };
 		67F16C882914327F00C6EA70 /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Report+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		67FD863B29192295004CD5CF /* ReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
+		67FD863C29192295004CD5CF /* ReportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 		6789DD752912CFAE00A2648F /* UtilityMeters */ = {
 			isa = PBXGroup;
 			children = (
+				67FD863829192204004CD5CF /* Views */,
 				677A5DAE2914FABA00027606 /* ViewModels */,
 				6789DD972912D15600A2648F /* Extensions */,
 				6789DD962912D14C00A2648F /* Protocols */,
@@ -182,6 +187,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		67FD863829192204004CD5CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				67FD863B29192295004CD5CF /* ReportCell.swift */,
+				67FD863C29192295004CD5CF /* ReportCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,6 +257,7 @@
 				6789DD862912CFB000A2648F /* LaunchScreen.storyboard in Resources */,
 				6789DD832912CFB000A2648F /* Assets.xcassets in Resources */,
 				6789DD7E2912CFAE00A2648F /* Main.storyboard in Resources */,
+				67FD863E29192295004CD5CF /* ReportCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +279,7 @@
 				6789DDA32912DB8300A2648F /* Protocols.swift in Sources */,
 				6789DD9F2912D79900A2648F /* AppCoordinator.swift in Sources */,
 				6789DD772912CFAE00A2648F /* AppDelegate.swift in Sources */,
+				67FD863D29192295004CD5CF /* ReportCell.swift in Sources */,
 				6789DD812912CFAE00A2648F /* UtilityMeters.xcdatamodeld in Sources */,
 				6789DD902912D0D200A2648F /* DetailViewController.swift in Sources */,
 				67F16C8A2914327F00C6EA70 /* Meter+CoreDataProperties.swift in Sources */,

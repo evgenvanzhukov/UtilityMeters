@@ -5,7 +5,7 @@ protocol CreateAble {
     static func createObject() -> Self
 }
 
-protocol Coordinator {
+protocol Coordinator: class {
     
     var navigationControoler: UINavigationController { get set }
     

@@ -19,9 +19,8 @@ class AppCoordinator: Coordinator {
     
     init(_ navigationController: UINavigationController) {
         self.navigationControoler = navigationController
-        navigationController.setNavigationBarHidden(true, animated: false)
         
-        //Todo: NavigationButtons remove from storuboard and set in code
+        configureNavigationController()
     }
     
     
@@ -87,4 +86,36 @@ class AppCoordinator: Coordinator {
         navigationControoler.viewControllers.popLast()
         showMetersController()
     }
+    
+    func configureNavigationController() {
+        let bounds = navigationControoler.view.bounds
+        let safearea = navigationControoler.view.safeAreaInsets
+        print(safearea)
+        let bar = UINavigationBar(frame: CGRect(x: bounds.minX, y: 44/2, width: bounds.width, height: 44))
+        
+        let naviGationItem = UINavigationItem(title: "Показания счетчиков")
+        let settingsBtn = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(settingsBtnPressed))
+        
+        let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBtnPressed))
+        
+        naviGationItem.leftBarButtonItem = settingsBtn
+        naviGationItem.rightBarButtonItem = addBtn
+        
+        bar.setItems([naviGationItem], animated: false)
+        self.navigationControoler.view.addSubview(bar)
+    }
+    
+    @objc
+    func settingsBtnPressed() {
+        
+            eventOccured(with: .settingsBtnPressed)
+    
+    }
+    
+    @objc
+    func addBtnPressed() {
+        eventOccured(with: .addMeters(model: nil))
+
+    }
+
 }

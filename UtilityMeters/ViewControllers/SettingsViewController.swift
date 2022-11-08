@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate {
 
-    var coordinator : Coordinator?
+    weak var coordinator : Coordinator?
     var settingsManager = SettingsManager()
     var viewModel: [Setting]?
     

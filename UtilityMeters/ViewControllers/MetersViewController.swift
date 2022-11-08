@@ -11,55 +11,19 @@ import CoreData
 
 class MetersViewController: UIViewController, CreateAble, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
-    var coordinator : Coordinator?
+    weak var coordinator : Coordinator?
     var fetchResultController: NSFetchedResultsController<Report>?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.dataSource = self
+        configureTable()
         fetchResultController?.delegate = self
     }
     
-
-    
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func settingsBtnPressed(_ sender: Any) {
-        self.dismiss(animated: false, completion: {
-            self.coordinator?.eventOccured(with: .settingsBtnPressed)
-        })
-    }
-    
-    @IBAction func addBtnPressed(_ sender: Any) {
-        self.coordinator?.eventOccured(with: .addMeters(model: nil))
-
-    }
-    
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        fetchResultController?.sections?[section].objects?.count ?? 0
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        fetchResultController?.sections?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
-        UITableViewCell {
-        
-            let cell = tableView.dequeueReusableCell(withIdentifier: "repotCellId", for: indexPath)
-            
-            let report = fetchResultController?.object(at: indexPath)
-            
-            cell.textLabel?.text = "\(String(describing: report?.date))"
-            let meters = report?.meters as! Set<Meter>
-            let text = meters.map{"\($0.value ?? 0)"}.joined(separator: ", ")
-        
-            cell.detailTextLabel?.text = text
-            return cell
-    }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
@@ -74,7 +38,47 @@ class MetersViewController: UIViewController, CreateAble, UITableViewDataSource,
         default:
             return
         }
+    }
+    
+    
+    func configureTable() {
+        tableView.dataSource = self
+        
+        let nib = UINib(nibName: String(describing: ReportCell.self), bundle: nil)
+        
+        tableView.register(nib, forCellReuseIdentifier: String(describing: ReportCell.self))
+        
+        
+    }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        fetchResultController?.sections?[section].objects?.count ?? 0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        fetchResultController?.sections?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
+        UITableViewCell {
+        
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReportCell.self), for: indexPath)
+            var last: Report? = nil
+            
+            if indexPath.row < tableView.numberOfRows(inSection: indexPath.section) - 1 {
+                last = fetchResultController?.object(at: IndexPath(row: indexPath.row+1, section: indexPath.section)) ?? CoreDataManager().getInitial()
+            }
+            
+            guard let reportCell = cell as? ReportCell,
+                let report = fetchResultController?.object(at: indexPath)
+                else {
+                return cell
+            }
+            
+            
+            reportCell.configure(with: report, last: last )
+
+            return reportCell
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

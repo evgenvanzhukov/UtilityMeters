@@ -59,21 +59,18 @@ class CoreDataManager {
         let gasMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
         gasMeter.date = details.date
         gasMeter.type = Int16(MeterType.gas.rawValue)
-        gasMeter.date = details.date
         gasMeter.value = details.gasValue as NSDecimalNumber?
         report.addToMeters(gasMeter)
         
         let waterMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
         waterMeter.date = details.date
         waterMeter.type = Int16(MeterType.water.rawValue)
-        waterMeter.date = details.date
         waterMeter.value = details.waterValue as NSDecimalNumber?
         report.addToMeters(waterMeter)
         
         let electroMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
         electroMeter.date = details.date
-        electroMeter.type = Int16(MeterType.water.rawValue)
-        electroMeter.date = details.date
+        electroMeter.type = Int16(MeterType.electro.rawValue)
         electroMeter.value = details.electroValue as NSDecimalNumber?
         report.addToMeters(electroMeter)
         
@@ -88,6 +85,13 @@ class CoreDataManager {
     func deleteReport(_ entity: Report) {
         CoreDataManager.persistentContainer.viewContext.delete(entity)
         saveContext()
+    }
+    
+    func getInitial() -> Report? {
+        
+        var request = NSFetchRequest<Report>(entityName: String(describing: Report.self))
+        request.predicate = NSPredicate(format: "ANY meters.isInitial", argumentArray: [true])
+        return try? CoreDataManager.persistentContainer.viewContext.fetch(request).first(where: {$0 != nil})
     }
     
 }

@@ -189,24 +189,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ar-Qt-bWG">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Показания счетчиков" id="Gss-Xn-CBo">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="INL-3H-gMl">
-                                            <connections>
-                                                <action selector="settingsBtnPressed:" destination="a5p-il-OPK" id="iQ6-Tl-4JH"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="adA-v3-jdE">
-                                            <connections>
-                                                <action selector="addBtnPressed:" destination="a5p-il-OPK" id="KLv-co-1nS"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
