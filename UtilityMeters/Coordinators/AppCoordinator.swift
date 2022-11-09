@@ -83,7 +83,7 @@ class AppCoordinator: Coordinator {
     }
     
     func closeSettings() {
-        navigationControoler.viewControllers.popLast()
+        navigationControoler.viewControllers.removeAll()
         showMetersController()
     }
     
