@@ -32,25 +32,7 @@ class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let settings = settingsManager.getSettings(),
-            let gasSetting = settings.first(where: {$0.meterType == .gas}),
-            let waterSetting = settings.first(where: {$0.meterType == .water}),
-            let electroSetting = settings.first(where: {$0.meterType == .electro})  {
-            
-            self.viewModel = settings
-            
-            gasRateField.text = "\(gasSetting.rate)"
-            gasUnitField.text = gasSetting.meterUnits
-            
-            waterRateField.text = "\(waterSetting.rate)"
-            waterUnitField.text = waterSetting.meterUnits
-            
-            electroRateField.text = "\(electroSetting.rate)"
-            electroUnitField.text = electroSetting.meterUnits
-        }
-        else {
-            viewModel = [Setting]()
-        }
+        configureView()
 
         
         gasUnitField.delegate = self
@@ -80,5 +62,24 @@ class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate 
         })
         
         
+    }
+    
+    func configureView() {
+        if let settings = settingsManager.getSettings(),
+            let gasSetting = settings.first(where: {$0.meterType == .gas}),
+            let waterSetting = settings.first(where: {$0.meterType == .water}),
+            let electroSetting = settings.first(where: {$0.meterType == .electro})  {
+            
+            self.viewModel = settings
+            
+            gasRateField.text = "\(gasSetting.rate)"
+            gasUnitField.text = gasSetting.meterUnits
+            
+            waterRateField.text = "\(waterSetting.rate)"
+            waterUnitField.text = waterSetting.meterUnits
+            
+            electroRateField.text = "\(electroSetting.rate)"
+            electroUnitField.text = electroSetting.meterUnits
+        }
     }
 }

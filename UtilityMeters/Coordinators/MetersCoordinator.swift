@@ -25,7 +25,14 @@ class MetersCoordinator : Coordinator {
         case .addMeters(let meters):
             if let model = meters {
                 coreData.addReport(model)
-                navigationControoler.popViewController(animated: true)
+                navigationControoler.viewControllers.popLast()
+            }
+            break
+            
+        case .editMeters(let meters):
+            if let model = meters {
+                coreData.updateReport(model)
+                navigationControoler.viewControllers.popLast()
             }
             
             break
@@ -35,18 +42,18 @@ class MetersCoordinator : Coordinator {
     }
     
     
-
-    
-    
-
-    
     func start() {
-        
+        let detailsController = DetailViewController.createObject()
+        detailsController.coordinator = self
+        navigationControoler.pushViewController(detailsController, animated: true)
     }
     
-    
-    func coordinate(_ viewController: UIViewController) {
-        
+    func edit(_ model: DetailViewModel) {
+        let detailsController = DetailViewController.createObject()
+        detailsController.viewModel = model
+        detailsController.isNewReport = false
+        detailsController.coordinator = self
+        navigationControoler.pushViewController(detailsController, animated: true)
     }
     
 }

@@ -10,9 +10,9 @@ import UIKit
 
 class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
 
-    weak var coordinator : Coordinator?
+    var coordinator : Coordinator?
     var viewModel: DetailViewModel?
-
+    var isNewReport = true
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var waterTextField: UITextField!
@@ -40,7 +40,8 @@ class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
         model.waterValue = waterValue
         model.electroValue = electroValue
         model.date = datePicker.date
-        self.coordinator?.eventOccured(with: .addMeters(model: model))
+        let eventType: EventType = isNewReport ? .addMeters(model: model) : .editMeters(model: model)
+        (self.coordinator as? MetersCoordinator)?.eventOccured(with: eventType)
     }
     
     

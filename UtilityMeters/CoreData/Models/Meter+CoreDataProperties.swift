@@ -21,5 +21,12 @@ extension Meter {
     @NSManaged public var isInitial: Bool
     @NSManaged public var type: Int16
     @NSManaged public var value: NSDecimalNumber?
+    
+    func setValues(date: Date, type: MeterType, value: Decimal?) -> Meter {
+        self.value = value as NSDecimalNumber?
+        self.date = date
+        self.type = Int16(type.rawValue)
+        return self
+    }
 
 }

@@ -34,8 +34,12 @@ class MetersViewController: UIViewController, CreateAble, UITableViewDataSource,
             break
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
-
+            break
+        case .update:
+            tableView.reloadData()
+            
         default:
+            print(indexPath, newIndexPath, anObject)
             return
         }
     }
@@ -43,7 +47,7 @@ class MetersViewController: UIViewController, CreateAble, UITableViewDataSource,
     
     func configureTable() {
         tableView.dataSource = self
-        
+        tableView.delegate = self
         let nib = UINib(nibName: String(describing: ReportCell.self), bundle: nil)
         
         tableView.register(nib, forCellReuseIdentifier: String(describing: ReportCell.self))
@@ -95,6 +99,21 @@ class MetersViewController: UIViewController, CreateAble, UITableViewDataSource,
         default:
             return
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let report = fetchResultController?.object(at: indexPath),
+            let meters = report.meters?.allObjects as? [Meter],
+            let gas = meters.first(.gas),
+            let water = meters.first(.water),
+            let electro = meters.first(.electro)
+            else {
+            return
+        }
+        
+        let model = DetailViewModel(gasValue: gas.value?.decimalValue, waterValue: water.value?.decimalValue, electroValue: electro.value?.decimalValue, date: report.date, calculating: nil)
+        
+        coordinator?.eventOccured(with: .editMeters(model: model))
     }
 }
 

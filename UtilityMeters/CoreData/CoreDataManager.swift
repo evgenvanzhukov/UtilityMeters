@@ -54,25 +54,11 @@ class CoreDataManager {
     }
     
     func addReport(_ details: DetailViewModel) {
+
+        
         let report = Report(context: CoreDataManager.persistentContainer.viewContext)
         
-        let gasMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
-        gasMeter.date = details.date
-        gasMeter.type = Int16(MeterType.gas.rawValue)
-        gasMeter.value = details.gasValue as NSDecimalNumber?
-        report.addToMeters(gasMeter)
-        
-        let waterMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
-        waterMeter.date = details.date
-        waterMeter.type = Int16(MeterType.water.rawValue)
-        waterMeter.value = details.waterValue as NSDecimalNumber?
-        report.addToMeters(waterMeter)
-        
-        let electroMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
-        electroMeter.date = details.date
-        electroMeter.type = Int16(MeterType.electro.rawValue)
-        electroMeter.value = details.electroValue as NSDecimalNumber?
-        report.addToMeters(electroMeter)
+        addMeters(to: report, with: details)
         
         report.date = details.date
         //print("details.date \(details.date!)")
@@ -82,6 +68,25 @@ class CoreDataManager {
         saveContext()
     }
     
+    func addMeters(to report: Report, with details: DetailViewModel) {
+        
+        guard let date = details.date else {
+            return
+        }
+        
+        let gasMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
+
+        report.addToMeters(gasMeter.setValues(date: date, type: .gas, value: details.gasValue))
+        
+        let waterMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
+
+        report.addToMeters(waterMeter.setValues(date: date, type: .water, value: details.waterValue))
+        
+        let electroMeter = Meter(context: CoreDataManager.persistentContainer.viewContext)
+
+        report.addToMeters(electroMeter.setValues(date: date, type: .electro, value: details.electroValue))
+    }
+    
     func deleteReport(_ entity: Report) {
         CoreDataManager.persistentContainer.viewContext.delete(entity)
         saveContext()
@@ -89,9 +94,28 @@ class CoreDataManager {
     
     func getInitial() -> Report? {
         
-        var request = NSFetchRequest<Report>(entityName: String(describing: Report.self))
+        let request = NSFetchRequest<Report>(entityName: String(describing: Report.self))
         request.predicate = NSPredicate(format: "ANY meters.isInitial", argumentArray: [true])
-        return try? CoreDataManager.persistentContainer.viewContext.fetch(request).first(where: {$0 != nil})
+        return try? CoreDataManager.persistentContainer.viewContext.fetch(request)[0]
     }
     
+    func updateReport(_ details: DetailViewModel) {
+        let request = NSFetchRequest<Report>(entityName: String(describing: Report.self))
+        
+        request.predicate = NSPredicate(format: "date = %@", argumentArray: [details.date!])
+        
+        
+        do {
+            let report = try CoreDataManager.persistentContainer.viewContext.fetch(request)[0]
+            
+            report.meters?.allObjects.forEach {meter in
+                try? report.removeFromMeters(meter as! Meter)
+            }
+            
+            addMeters(to: report, with: details)
+            saveContext()            
+        } catch {
+            return
+        }
+    }
 }

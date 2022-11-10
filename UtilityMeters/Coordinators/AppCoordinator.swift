@@ -35,18 +35,19 @@ class AppCoordinator: Coordinator {
             break
             
         case .addMeters:
-            let detailsController = DetailViewController.createObject()
-            detailsController.coordinator = MetersCoordinator(navigationControoler)
-            navigationControoler.pushViewController(detailsController, animated: true)
+            let coordinator = MetersCoordinator(navigationControoler)
+            coordinator.start()
+            
             break
             
         case .deleteReport(let report):
             coreData.deleteReport(report)
             break
+        
+        case .editMeters(let model):
+            MetersCoordinator(navigationControoler).edit(model!)
+            break
             
-            
-        default:
-            return
         }
     }
     
@@ -107,15 +108,12 @@ class AppCoordinator: Coordinator {
     
     @objc
     func settingsBtnPressed() {
-        
-            eventOccured(with: .settingsBtnPressed)
-    
+        eventOccured(with: .settingsBtnPressed)
     }
     
     @objc
     func addBtnPressed() {
         eventOccured(with: .addMeters(model: nil))
-
     }
 
 }
