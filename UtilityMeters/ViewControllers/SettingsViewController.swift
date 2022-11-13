@@ -33,7 +33,6 @@ class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate 
         super.viewDidLoad()
         
         configureView()
-
         
         gasUnitField.delegate = self
         gasRateField.delegate = self
@@ -60,8 +59,6 @@ class SettingsViewController: UIViewController, CreateAble, UITextFieldDelegate 
         self.dismiss(animated: false, completion: {
             (self.coordinator as? AppCoordinator)?.closeSettings()
         })
-        
-        
     }
     
     func configureView() {

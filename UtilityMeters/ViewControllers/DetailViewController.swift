@@ -13,6 +13,9 @@ class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
     var coordinator : Coordinator?
     var viewModel: DetailViewModel?
     var isNewReport = true
+        
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var saveBtn: UIButton!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var waterTextField: UITextField!
@@ -49,6 +52,9 @@ class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
         super.viewDidLoad()
 
         configure()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func configure() {
@@ -60,13 +66,51 @@ class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
         }
         else {
             viewModel = DetailViewModel(gasValue: 0, waterValue: 0, electroValue: 0, date: Date())
-            
-            //todo: set from last meters
         }
+        toggleSaveBtnEnabled()
         datePicker.date = viewModel?.date ?? Date()
         gasTextField.delegate = self
         waterTextField.delegate = self
         electroTextField.delegate = self
+    }
+    
+
+    @objc
+    func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else {return}
+        var keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInsets = self.scrollView.contentInset
+        contentInsets.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInsets
+    }
+    
+    @objc
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.contentInset.bottom = 0
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        textField.textColor = UIColor.black
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if Decimal(string:textField.text ?? "") == nil {
+            textField.textColor = UIColor.red
+        }
+        toggleSaveBtnEnabled()
+    }
+    
+    func toggleSaveBtnEnabled() {
+        let fields = [waterTextField, gasTextField, electroTextField]
+        if fields.allSatisfy({Decimal(string:$0?.text ?? "") != nil}) {
+            saveBtn.isEnabled = true
+        }
+        else {
+            saveBtn.isEnabled = false
+        }
     }
 
 }
