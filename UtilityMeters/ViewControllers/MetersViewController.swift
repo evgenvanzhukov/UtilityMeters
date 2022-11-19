@@ -11,7 +11,7 @@ import CoreData
 
 class MetersViewController: UIViewController, CreateAble, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
-    weak var coordinator : Coordinator?
+    weak var coordinator : (Coordinator & Sharing)?
     var fetchResultController: NSFetchedResultsController<Report>?
     
     
@@ -39,7 +39,6 @@ class MetersViewController: UIViewController, CreateAble, UITableViewDataSource,
             tableView.reloadData()
             
         default:
-            print(indexPath, newIndexPath, anObject)
             return
         }
     }
@@ -114,6 +113,30 @@ class MetersViewController: UIViewController, CreateAble, UITableViewDataSource,
         let model = DetailViewModel(gasValue: gas.value?.decimalValue, waterValue: water.value?.decimalValue, electroValue: electro.value?.decimalValue, date: report.date, calculating: nil)
         
         coordinator?.eventOccured(with: .editMeters(model: model))
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        let action = UIContextualAction(style: .normal, title: "Share") { (action, view, success) in
+            
+            self.coordinator?.share(nil)
+        }
+        action.image = UIImage(systemName: "share")
+        return UISwipeActionsConfiguration(actions: [action])
+        
+    }
+    
+    func getDataFor(indexPath: IndexPath) {
+        var last: Report? = nil
+        
+        if indexPath.row < tableView.numberOfRows(inSection: indexPath.section) - 1 {
+            last = fetchResultController?.object(at: IndexPath(row: indexPath.row+1, section: indexPath.section)) ?? CoreDataManager().getInitial()
+        }
+        
+        guard let report = fetchResultController?.object(at: indexPath)
+            else {
+            return
+        }
     }
 }
 

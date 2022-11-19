@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
-class AppCoordinator: Coordinator {
+class AppCoordinator: Coordinator, Sharing {
+    
+    
+    func share(_ model: AnyObject?) {
+        print("-------shared from coordinator------")
+    }
+    
     
     var navigationControoler: UINavigationController
     

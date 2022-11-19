@@ -13,3 +13,7 @@ protocol Coordinator: class {
     
     func eventOccured(with event: EventType)
 }
+
+protocol Sharing: class {
+    func share(_ model: AnyObject?)
+}
