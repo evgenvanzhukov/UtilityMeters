@@ -13,7 +13,39 @@ class Calculator {
     var settings: [Setting]?
     
     var lastGas, lastWater, lastElectro, gas, water, electro : Meter?
-
+    
+    var gasValue: Decimal {
+        get {
+            return gas!.value!.decimalValue
+        }
+    }
+ 
+    var waterValue: Decimal {
+        get {
+            return water!.value!.decimalValue
+        }
+    }
+    var electroValue: Decimal {
+        get {
+            return electro!.value!.decimalValue
+        }
+    }
+    
+    var lastGasValue: Decimal {
+        get {
+            return lastGas?.value?.decimalValue ?? 0
+        }
+    }
+    var lastWaterValue: Decimal {
+        get {
+            return lastWater?.value?.decimalValue ?? 0
+        }
+    }
+    var lastElectroValue: Decimal {
+        get {
+            return lastElectro?.value?.decimalValue ?? 0
+        }
+    }
     
     init(report: Report, last: Report?)
     {
@@ -45,12 +77,28 @@ class Calculator {
     
     
     
-    func calculateValue(_ value: NSDecimalNumber?, _ lastValue: NSDecimalNumber?) -> Decimal {
-        if lastValue == nil {
-            return 0
+    func calculateValue(for type:MeterType) -> Decimal {
+        
+        switch type {
+           
+        case .gas:
+            if lastGas?.value == nil {
+                return 0
+            }
+            return gas!.value!.decimalValue  - lastGas!.value!.decimalValue
+        case .water:
+            if lastWater?.value == nil {
+                return 0
+            }
+            return water!.value!.decimalValue  - lastWater!.value!.decimalValue
+        case .electro:
+            if lastElectro?.value == nil {
+                return 0
+            }
+            return electro!.value!.decimalValue  - lastElectro!.value!.decimalValue
         }
-        return value!.decimalValue  - lastValue!.decimalValue
     }
+    
     
     func calculateTotal() -> Decimal {
         
@@ -58,11 +106,9 @@ class Calculator {
             let waterRate = settings!.first(where: {$0.meterType == MeterType.water})?.rate,
             let electroRate = settings!.first(where: {$0.meterType == MeterType.electro})?.rate {
             
-            return calculateValue(gas!.value, lastGas?.value) * gasRate
-                + calculateValue(water!.value, lastWater?.value) * waterRate
-                + calculateValue(electro!.value, lastElectro?.value) * electroRate
-            
-            
+            return calculateValue(for: .gas) * gasRate
+                + calculateValue(for: .water) * waterRate
+                + calculateValue(for: .electro) * electroRate
         }
         
         return 0

@@ -64,8 +64,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "fetchResultController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,8 +126,8 @@
             filePath = "UtilityMeters/Coordinators/AppCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "addBtnPressed()"
             landmarkType = "7">
          </BreakpointContent>
@@ -176,8 +176,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
             endingLineNumber = "119"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "updateReport(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

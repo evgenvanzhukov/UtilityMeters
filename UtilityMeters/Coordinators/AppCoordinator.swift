@@ -12,8 +12,20 @@ import UIKit
 class AppCoordinator: Coordinator, Sharing {
     
     
-    func share(_ model: AnyObject?) {
-        print("-------shared from coordinator------")
+    func share(_ calculator: Calculator, _ parentViewConreoller: UIViewController) {
+        
+        let resultText = "Газ: \(calculator.gasValue) - \(calculator.lastGasValue) = \(calculator.gasValue - calculator.lastGasValue) куб, \(calculator.calculateValue(for: .gas)) руб.\n" +
+            "Вода: \(calculator.waterValue) - \(calculator.lastWaterValue) = \(calculator.waterValue - calculator.lastWaterValue) куб, \(calculator.calculateValue(for: .water)) руб.\n" +
+            "Электр.: \(calculator.electroValue) - \(calculator.lastElectroValue) = \(calculator.electroValue - calculator.lastElectroValue) кВтч, \(calculator.calculateValue(for: .electro)) руб.\n" +
+            "Всего: \(calculator.calculateTotal()) руб"
+        
+        let activityVC = UIActivityViewController(activityItems: [resultText], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = parentViewConreoller.view
+        
+        parentViewConreoller.present(activityVC, animated: true, completion: nil)
+        
+        
+        print(resultText)
     }
     
     

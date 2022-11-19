@@ -15,5 +15,5 @@ protocol Coordinator: class {
 }
 
 protocol Sharing: class {
-    func share(_ model: AnyObject?)
+    func share(_ calculator: Calculator, _ parentViewConreoller: UIViewController)
 }

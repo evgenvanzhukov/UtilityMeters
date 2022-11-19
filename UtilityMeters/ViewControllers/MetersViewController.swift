@@ -118,25 +118,27 @@ class MetersViewController: UIViewController, CreateAble, UITableViewDataSource,
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         let action = UIContextualAction(style: .normal, title: "Share") { (action, view, success) in
-            
-            self.coordinator?.share(nil)
+            let calculator = try! self.calculatorFor(indexPath: indexPath)
+            self.coordinator?.share(calculator, self)
         }
         action.image = UIImage(systemName: "share")
         return UISwipeActionsConfiguration(actions: [action])
         
     }
     
-    func getDataFor(indexPath: IndexPath) {
+    func calculatorFor(indexPath: IndexPath) throws -> Calculator {
+        
         var last: Report? = nil
         
-        if indexPath.row < tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            last = fetchResultController?.object(at: IndexPath(row: indexPath.row+1, section: indexPath.section)) ?? CoreDataManager().getInitial()
+        if let report = fetchResultController?.object(at: indexPath) {
+            if indexPath.row < tableView.numberOfRows(inSection: indexPath.section) - 1 {
+                last = fetchResultController?.object(at: IndexPath(row: indexPath.row+1, section: indexPath.section))
+            }
+            
+            return Calculator(report: report, last: last)
         }
         
-        guard let report = fetchResultController?.object(at: indexPath)
-            else {
-            return
-        }
+        throw "Not found error"
     }
 }
 
