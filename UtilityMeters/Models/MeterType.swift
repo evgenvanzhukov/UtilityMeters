@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum MeterType : Int, Codable {
+///Тип счетчика
+enum MeterType : Int, Codable, Hashable {
     case gas = 1
     case water = 2
     case electro = 3

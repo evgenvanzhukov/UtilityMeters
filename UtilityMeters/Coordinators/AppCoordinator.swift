@@ -86,6 +86,7 @@ class AppCoordinator: Coordinator, Sharing {
     
     func showSettingsController() {
         let viewController = SettingsViewController.createObject()
+            //SettingDetailViewController.createObject()
         viewController.coordinator = self
         navigationControoler.pushViewController(viewController, animated: true)
     }
@@ -112,7 +113,7 @@ class AppCoordinator: Coordinator, Sharing {
         print(safearea)
         let bar = UINavigationBar(frame: CGRect(x: bounds.minX, y: 44/2, width: bounds.width, height: 44))
         
-        let naviGationItem = UINavigationItem(title: "Показания счетчиков")
+        let naviGationItem = UINavigationItem(title: "показани счетчиков или ввод новых")
         let settingsBtn = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(settingsBtnPressed))
         
         let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBtnPressed))

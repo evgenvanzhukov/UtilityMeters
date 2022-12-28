@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         coordinator = AppCoordinator(navController)
-        coordinator?.settings = SettingsManager().getSettings()
+        coordinator?.settings = SettingsManager().getSettings(nil)
         coordinator?.start()
         
         return true

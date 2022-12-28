@@ -22,4 +22,8 @@ struct Setting : Codable {
     
     ///Тариф
     var rate: Decimal
+    
+    var dateFrom : Date
+    
+    var dateTo: Date?
 }

@@ -54,7 +54,7 @@ class ReportCell: UITableViewCell {
         if lastValue == nil {
             return "\(value!)"
         }
-        return "\(value!) - \(lastValue ?? 0) = \(value!.subtracting(lastValue!))"
+        return "\(value!) - \(lastValue!) = \(value!.subtracting(lastValue!))"
     }
     
 }
