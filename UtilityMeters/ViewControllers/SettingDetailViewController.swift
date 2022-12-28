@@ -11,8 +11,8 @@ import UIKit
 class SettingDetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
 
     weak var coordinator : Coordinator?
-    var settingsManager = SettingsManager()
-    var viewModel: [Setting]?
+    var settingsManager = MeterRateManager()
+    var viewModel: [MeterRate]?
     
     @IBAction func saveBtnPressed(_ sender: Any) {
         saveAndClose()
@@ -46,7 +46,7 @@ class SettingDetailViewController: UIViewController, CreateAble, UITextFieldDele
     
     func saveAndClose() {
         
-        viewModel = [Setting]()
+        viewModel = [MeterRate]()
 //        viewModel!.append(
 //            Setting(meterName: "Газ", meterType: .gas, meterUnits: gasUnitField!.text!, rate: Decimal(string: gasRateField!.text!) ?? 0))
 //        viewModel!.append(
@@ -62,7 +62,7 @@ class SettingDetailViewController: UIViewController, CreateAble, UITextFieldDele
     }
     
     func configureView() {
-        if let settings = settingsManager.getSettings(nil),
+        if let settings = settingsManager.getRates(nil),
             let gasSetting = settings.first(where: {$0.meterType == .gas}),
             let waterSetting = settings.first(where: {$0.meterType == .water}),
             let electroSetting = settings.first(where: {$0.meterType == .electro})  {

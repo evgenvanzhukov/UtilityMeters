@@ -33,7 +33,7 @@ class AppCoordinator: Coordinator, Sharing {
     
     let coreData = CoreDataManager()
 
-    var settings: [Setting]? // ViewMidel ?
+    var settings: [MeterRate]? // ViewMidel ?
     
     init(_ navigationController: UINavigationController) {
         self.navigationControoler = navigationController

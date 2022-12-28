@@ -10,7 +10,7 @@ import Foundation
 
 class Calculator {
     
-    var settings: [Setting]?
+    var meterRates: [MeterRate]?
     
     var lastGas, lastWater, lastElectro, gas, water, electro : Meter?
     
@@ -49,7 +49,7 @@ class Calculator {
     
     init(report: Report, last: Report?)
     {
-        settings = SettingsManager().getSettings(nil)
+        meterRates = MeterRateManager().getRates(nil)
         
         guard let meters = report.meters?.allObjects as? [Meter],
               let gas = meters.first(MeterType.gas ),
@@ -102,9 +102,9 @@ class Calculator {
     
     func calculateTotal() -> Decimal {
         
-        if let gasRate = settings!.first(where: {$0.meterType == MeterType.gas})?.rate,
-            let waterRate = settings!.first(where: {$0.meterType == MeterType.water})?.rate,
-            let electroRate = settings!.first(where: {$0.meterType == MeterType.electro})?.rate {
+        if let gasRate = meterRates!.first(where: {$0.meterType == MeterType.gas})?.rate,
+            let waterRate = meterRates!.first(where: {$0.meterType == MeterType.water})?.rate,
+            let electroRate = meterRates!.first(where: {$0.meterType == MeterType.electro})?.rate {
             
             return calculateValue(for: .gas) * gasRate
                 + calculateValue(for: .water) * waterRate

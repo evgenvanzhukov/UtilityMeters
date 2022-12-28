@@ -17,7 +17,7 @@ class SettingsCell: UITableViewCell {
     @IBOutlet weak var gasField: UITextField!
     @IBOutlet weak var waterField: UITextField!
     @IBOutlet weak var electroField: UITextField!
-    var settings: [Setting]?
+    var settings: [MeterRate]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +31,7 @@ class SettingsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(_ settings: [Setting]?) {
+    func configure(_ settings: [MeterRate]?) {
         guard settings != nil, settings!.count > 0 else {
             gasField.text = "gas"
             waterField.text = "water"

@@ -9,23 +9,23 @@
 import Foundation
 
 
-protocol SettingProtocol {
+protocol MeterRateProtocol {
     
     ///Возвращает значение одного тарифа на определенную дату
-    func getSetting(for type: MeterType, on date: Date?) -> Setting?
+    func getRate(for type: MeterType, on date: Date?) -> MeterRate?
     
     ///возвращает актуальные тарифы на определенную дату
-    func getSettings(_ date: Date?) -> [Setting]?
+    func getRates(_ date: Date?) -> [MeterRate]?
     
     //////добавляет новое значение тарифа
-    func addSetting(_ value: Setting)
+    func addRate(_ value: MeterRate)
     
     ///Возвращает все значения тарифов
-    func getAll() -> [MeterType : [Setting]]
+    func getAll() -> [MeterType : [MeterRate]]
 }
 
 /// Сервис работы с настройками
-class SettingsManager : SettingProtocol {
+class MeterRateManager : MeterRateProtocol {
     
     let userDefaults = UserDefaults.standard
     let encoder = JSONEncoder()
@@ -42,22 +42,24 @@ class SettingsManager : SettingProtocol {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.date(from: "2000-01-01")!
     }
+    
     var today : Date {
         return Date()
     }
+    
     // MARK: - proocol
     
-    func getAll() -> [MeterType : [Setting]] {
-        guard let json = userDefaults.object(forKey: String(describing: Setting.self)) as? Data?, let data = json else {
+    func getAll() -> [MeterType : [MeterRate]] {
+        guard let json = userDefaults.object(forKey: String(describing: MeterRate.self)) as? Data?, let data = json else {
             return [:]
         }
-        if let dict = try? decoder.decode((Dictionary<MeterType, [Setting]>).self, from: data) {
+        if let dict = try? decoder.decode((Dictionary<MeterType, [MeterRate]>).self, from: data) {
             return dict
         }
         return [:]
     }
     
-    func getSetting(for type: MeterType, on date: Date?) -> Setting? {
+    func getRate(for type: MeterType, on date: Date?) -> MeterRate? {
         let all = getAll()
         guard let settings = all[type], settings.count > 0 else {
             return nil
@@ -68,7 +70,7 @@ class SettingsManager : SettingProtocol {
         }
     }
     
-    func getSettings(_ date: Date?) -> [Setting]? {
+    func getRates(_ date: Date?) -> [MeterRate]? {
         let all = getAll()
         
         guard all.count > 0,
@@ -86,20 +88,8 @@ class SettingsManager : SettingProtocol {
         return [gasSetting, waterSetting, electroSetting]
     }
     
-    /// Сохарняет счетчики в USerDefaults
-    private func setSettings(dict: [MeterType : [Setting]]) {
-        guard let json = try? encoder.encode(dict) else {
-            return
-        }
-        userDefaults.set(json, forKey: String(describing: Setting.self))
-    }
-    
-    
-    
-    
-    
     ///добавляет значение
-    func addSetting(_ value: Setting) {
+    func addRate(_ value: MeterRate) {
         
         guard let json = try? encoder.encode(value) else {
             return
@@ -112,7 +102,7 @@ class SettingsManager : SettingProtocol {
                 return s2.dateFrom > s1.dateFrom
             }
             
-            var index = sorted.firstIndex { (s) -> Bool in
+            let index = sorted.firstIndex { (s) -> Bool in
                 value.dateFrom > s.dateFrom && (s.dateTo ?? maxDate) > value.dateFrom
             }!
             
@@ -127,9 +117,10 @@ class SettingsManager : SettingProtocol {
         setSettings(dict: settings)
     }
     
+    // MARK: - private
     
     ///возвращает значение тарифа на дату
-    private func filterSetting(_ array:[Setting], _ date: Date?) -> Setting {
+    private func filterSetting(_ array:[MeterRate], _ date: Date?) -> MeterRate {
 
         let searchDate = date ?? today
 
@@ -137,5 +128,14 @@ class SettingsManager : SettingProtocol {
         return array.first { (setting) -> Bool in
             return searchDate > setting.dateFrom && searchDate < (setting.dateTo ?? maxDate)
         }!
+    }
+    
+    
+    /// Сохарняет счетчики в UserDefaults
+    private func setSettings(dict: [MeterType : [MeterRate]]) {
+        guard let json = try? encoder.encode(dict) else {
+            return
+        }
+        userDefaults.set(json, forKey: String(describing: MeterRate.self))
     }
 }

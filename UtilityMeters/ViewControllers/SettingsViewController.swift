@@ -10,10 +10,9 @@ import UIKit
 
 class SettingsViewController: UIViewController, CreateAble, UITableViewDelegate, UITableViewDataSource {
     weak var coordinator : Coordinator?
-//    var viewModel: [Setting] = {
-//        return self.settingManager
-//    }()
-    var settingManager = SettingsManager()
+
+    
+    var settingManager = MeterRateManager()
     @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad() {
@@ -37,7 +36,7 @@ extension SettingsViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: String(describing:  SettingsCell.self), for: indexPath
         ) as! SettingsCell
         
-        cell.settings = settingManager.getSettings(nil)
+        cell.settings = settingManager.getRates(nil)
         
         return cell
     }

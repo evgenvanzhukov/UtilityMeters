@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         coordinator = AppCoordinator(navController)
-        coordinator?.settings = SettingsManager().getSettings(nil)
+        coordinator?.settings = MeterRateManager().getRates(nil)
         coordinator?.start()
         
         return true

@@ -8,13 +8,13 @@
 
 import Foundation
 
-///Структура описывающая счетчик
-struct Setting : Codable {
+///Тариф счетчика
+struct MeterRate : Codable {
     
-    ///Название
+    ///Название счетчика
     var meterName : String
     
-    ///Тип
+    ///Тип счетчика
     var meterType : MeterType
     
     /// Единицы измерения
@@ -23,7 +23,9 @@ struct Setting : Codable {
     ///Тариф
     var rate: Decimal
     
+    ///Дата начала действия тарифа
     var dateFrom : Date
     
+    ///Дата окончания действия тарифа
     var dateTo: Date?
 }
