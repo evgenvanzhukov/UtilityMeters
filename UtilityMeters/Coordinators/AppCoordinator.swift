@@ -105,7 +105,7 @@ class AppCoordinator: Coordinator, Sharing {
         navigationControoler.pushViewController(viewController, animated: true)
     }
     
-    func closeSettings() {
+    func closeMeterRates() {
         navigationControoler.viewControllers.removeAll()
         showMeters()
     }

@@ -75,8 +75,14 @@ class MeterRatesCoordinator : Coordinator {
         print("backBtnPressed")
         var controllers = navigationControoler.viewControllers
         controllers.removeLast()
-        print("parent: ",parentCoordinator)
-        navigationControoler.viewControllers = controllers
+        guard let appCoordinator = parentCoordinator as? AppCoordinator else {
+            print("where is the parent??")
+            return
+        }
+        appCoordinator.closeMeterRates()
+        //appCoordinator.showMeters()
+//        print("parent: ",parentCoordinator )
+//        navigationControoler.viewControllers = controllers
     }
     
     @objc
