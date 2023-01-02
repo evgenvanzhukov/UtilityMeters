@@ -136,7 +136,8 @@ class MeterRateDetailViewController: UIViewController, CreateAble, UITextFieldDe
             var allowedCharacters = CharacterSet.decimalDigits
             allowedCharacters.insert(".")
             let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
+            let result = allowedCharacters.isSuperset(of: characterSet)
+            return result
         }
         
         return true

@@ -93,7 +93,6 @@ class MeterRateManager : MeterRateProtocol {
     func addRate(_ newValue: MeterRate) {
         
         var newMeterRate = newValue
-        print("new date from", newMeterRate.dateFrom)
         
         guard let json = try? encoder.encode(newMeterRate) else {
             return
@@ -139,7 +138,37 @@ class MeterRateManager : MeterRateProtocol {
         
         
         
-        setSettings(dict: allRates)
+        saveMeterRates(dict: allRates)
+    }
+    
+    func deleteRate(type: MeterType, row: Int) {
+        var allRates = getAll()
+        //let index = Array(allRates.keys)[indexPath.section]
+
+        if allRates[type] == nil || allRates[type]!.count == 0 {
+            return
+        }
+        //let row = indexPath.row
+        var rates = allRates[type]!
+        
+        let deletedRate = rates[row]
+        
+        if row == 0 { // удаляем первый или единственный
+            rates.removeFirst()
+        }
+        else if rates.count == row+1 { // удаляем последний
+            rates.removeLast()
+            rates[row-1].dateTo = nil
+        }
+        else { // удаляем из середины точно не первый и не последний
+            
+            let nextDateFrom = rates[row+1].dateFrom
+            rates[row-1].dateTo = nextDateFrom
+            rates.remove(at: row)
+        }
+        
+        allRates[type] = rates
+        saveMeterRates(dict: allRates)
     }
     
     // MARK: - private
@@ -152,12 +181,14 @@ class MeterRateManager : MeterRateProtocol {
 
         return array.first { (setting) -> Bool in
             return searchDate > setting.dateFrom && searchDate < (setting.dateTo ?? maxDate)
-        }!
+        } ?? array.sorted(by: { (rate1, rate2) -> Bool in
+            rate1.dateFrom < rate2.dateFrom
+        }).first!
     }
     
     
     /// Сохарняет счетчики в UserDefaults
-    private func setSettings(dict: [MeterType : [MeterRate]]) {
+    private func saveMeterRates(dict: [MeterType : [MeterRate]]) {
         guard let json = try? encoder.encode(dict) else {
             return
         }

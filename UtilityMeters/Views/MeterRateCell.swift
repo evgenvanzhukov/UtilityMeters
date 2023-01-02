@@ -43,9 +43,9 @@ class MeterRateCell: UITableViewCell {
             dateToPicker.date = todate
         }
         else {
-            dateToPicker.date = rate.dateFrom.addingTimeInterval(60*60*24*365)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            dateToPicker.date =  dateFormatter.date(from: "31.12.2099")! //rate.dateFrom.addingTimeInterval(60*60*24*365)
         }
-        
-        
     }
 }

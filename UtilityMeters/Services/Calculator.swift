@@ -49,7 +49,7 @@ class Calculator {
     
     init(report: Report, last: Report?)
     {
-        meterRates = MeterRateManager().getRates(nil)
+        meterRates = MeterRateManager().getRates(report.date)
         
         guard let meters = report.meters?.allObjects as? [Meter],
               let gas = meters.first(MeterType.gas ),
