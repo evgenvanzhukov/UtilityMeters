@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings View Controller-->
+        <!--Meter Rates View Controller-->
         <scene sceneID="Jht-EZ-2Id">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="4rq-dq-6au" customClass="SettingsViewController" customModule="UtilityMeters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MeterRatesViewController" id="4rq-dq-6au" customClass="MeterRatesViewController" customModule="UtilityMeters" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BK1-VJ-P88">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SettingsCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="ADf-aG-mgi" customClass="SettingsCell" customModule="UtilityMeters" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MeterRateCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeterRateCell" id="ADf-aG-mgi" userLabel="MeterRateCell" customClass="MeterRateCell" customModule="UtilityMeters" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ADf-aG-mgi" id="PZ7-Sd-yc5">
@@ -49,10 +49,10 @@
             </objects>
             <point key="canvasLocation" x="-947" y="126"/>
         </scene>
-        <!--Setting Detail View Controller-->
+        <!--Meter Rate Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="SettingDetailViewController" id="BYZ-38-t0r" customClass="SettingDetailViewController" customModule="UtilityMeters" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MeterRateDetailViewController" id="BYZ-38-t0r" customClass="MeterRateDetailViewController" customModule="UtilityMeters" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,97 +60,79 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRQ-yR-dF8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kJZ-h1-5pJ">
-                                        <rect key="frame" x="30" y="50" width="413.5" height="330"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="kJZ-h1-5pJ">
+                                        <rect key="frame" x="30" y="50" width="300" height="471"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="mib-Zx-8hD" userLabel="titles stackview">
-                                                <rect key="frame" x="0.0" y="0.0" width="413.5" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="mib-Zx-8hD" userLabel="titles stackview">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyQ-to-ZbL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="тариф" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63H-hS-SJ2">
-                                                        <rect key="frame" x="155.5" y="0.0" width="102.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ед/ изм" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gt9-dk-RmD">
-                                                        <rect key="frame" x="311" y="0.0" width="102.5" height="50"/>
+                                                        <rect key="frame" x="175" y="0.0" width="125" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="r9f-eI-qe0" userLabel="gas stackview">
-                                                <rect key="frame" x="0.0" y="70" width="413.5" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="r9f-eI-qe0" userLabel="rate stackview">
+                                                <rect key="frame" x="0.0" y="84" width="300" height="34"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Газ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbk-zM-f3E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tqj-kT-TAj">
-                                                        <rect key="frame" x="155.5" y="0.0" width="102.5" height="50"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tqj-kT-TAj" userLabel="Rate Field">
+                                                        <rect key="frame" x="0.0" y="0.0" width="123.5" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Wm-K0-ibm">
-                                                        <rect key="frame" x="311" y="0.0" width="102.5" height="50"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Wm-K0-ibm" userLabel="Unit Field">
+                                                        <rect key="frame" x="176.5" y="0.0" width="123.5" height="34"/>
+                                                        <accessibility key="accessibilityConfiguration">
+                                                            <accessibilityTraits key="traits" keyboardKey="YES"/>
+                                                        </accessibility>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="fuD-ZQ-Lra" userLabel="water stackview">
-                                                <rect key="frame" x="0.0" y="140" width="413.5" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuD-ZQ-Lra" userLabel="rate type stackview">
+                                                <rect key="frame" x="0.0" y="178" width="300" height="34"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вода" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SG-Me-1rF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YpT-1y-vqx">
-                                                        <rect key="frame" x="155.5" y="0.0" width="102.5" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGP-ch-s5k">
-                                                        <rect key="frame" x="311" y="0.0" width="102.5" height="50"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aGP-ch-s5k" userLabel="rate type field">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="Fbz-d9-I3j" userLabel="electro stackview">
-                                                <rect key="frame" x="0.0" y="210" width="413.5" height="50"/>
+                                            <stackView opaque="NO" contentMode="center" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fbz-d9-I3j" userLabel="date picker stackview">
+                                                <rect key="frame" x="0.0" y="272" width="300" height="100"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Электр." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atH-p6-MBC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="50"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата начала" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w33-xh-mYd">
+                                                        <rect key="frame" x="0.0" y="40" width="98.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sjZ-9z-S9q">
-                                                        <rect key="frame" x="155.5" y="0.0" width="102.5" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n3Z-zc-j3g">
-                                                        <rect key="frame" x="311" y="0.0" width="102.5" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Obh-vH-OWV">
+                                                        <rect key="frame" x="170" y="0.0" width="130" height="100"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="130" id="A0s-Bc-Fyp"/>
+                                                        </constraints>
+                                                        <date key="minimumDate" timeIntervalSinceReferenceDate="284036400">
+                                                            <!--2010-01-01 11:00:00 +0000-->
+                                                        </date>
+                                                    </datePicker>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="300" id="KRD-Cu-pNl"/>
+                                                </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9N-b5-cXn">
-                                                <rect key="frame" x="0.0" y="280" width="413.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="432" width="300" height="39"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="Сохранить">
@@ -183,12 +165,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="electroRateField" destination="sjZ-9z-S9q" id="w0h-VS-12r"/>
-                        <outlet property="electroUnitField" destination="n3Z-zc-j3g" id="pqC-U0-jby"/>
-                        <outlet property="gasRateField" destination="Tqj-kT-TAj" id="2s4-5P-3yc"/>
-                        <outlet property="gasUnitField" destination="9Wm-K0-ibm" id="zp7-mt-NZa"/>
-                        <outlet property="waterRateField" destination="YpT-1y-vqx" id="AWc-U5-lJ7"/>
-                        <outlet property="waterUnitField" destination="aGP-ch-s5k" id="QVO-Zf-88c"/>
+                        <outlet property="datePickeFrom" destination="Obh-vH-OWV" id="53U-PB-44T"/>
+                        <outlet property="rateTypeNameTextField" destination="aGP-ch-s5k" id="K5W-XO-wdO"/>
+                        <outlet property="rateUnitField" destination="9Wm-K0-ibm" id="zp7-mt-NZa"/>
+                        <outlet property="rateValueField" destination="Tqj-kT-TAj" id="2s4-5P-3yc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -7,6 +7,8 @@ protocol CreateAble {
 
 protocol Coordinator: class {
     
+    var parentCoordinator: Coordinator? {get set}
+    
     var navigationControoler: UINavigationController { get set }
     
     func start()

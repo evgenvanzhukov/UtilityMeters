@@ -11,6 +11,9 @@ import UIKit
 
 class AppCoordinator: Coordinator, Sharing {
     
+    var parentCoordinator: Coordinator?
+    
+    
     
     func share(_ calculator: Calculator, _ parentViewConreoller: UIViewController) {
         
@@ -38,7 +41,7 @@ class AppCoordinator: Coordinator, Sharing {
     init(_ navigationController: UINavigationController) {
         self.navigationControoler = navigationController
         
-        configureNavigationController()
+        //configureNavigationController()
     }
     
     
@@ -47,9 +50,9 @@ class AppCoordinator: Coordinator, Sharing {
         switch event {
             
         case .settingsBtnPressed:
-            let settingsController = SettingsViewController.createObject()
-            settingsController.coordinator = self
-            navigationControoler.pushViewController(settingsController, animated: false)
+            //let settingsController = MeterRatesViewController.createObject()
+            //settingsController.coordinator = self
+            //navigationControoler.pushViewController(settingsController, animated: false)
             break
             
         case .addMeters:
@@ -77,22 +80,22 @@ class AppCoordinator: Coordinator, Sharing {
     func start() {
         
         if settings != nil {
-            showMetersController()
+            showMeters()
         }
         else {
-            showSettingsController()
+            showMeterRates()
+            
         }
     }
     
-    func showSettingsController() {
-        let viewController = SettingsViewController.createObject()
-            //SettingDetailViewController.createObject()
-        viewController.coordinator = self
-        navigationControoler.pushViewController(viewController, animated: true)
+    func showMeterRates() {
+        var ratesCoordinator = MeterRatesCoordinator(navigationControoler, parentCoordinator: self)
+        ratesCoordinator.start()
     }
     
     
-    func showMetersController() {
+    func showMeters() {
+        configureNavigationController()
         let viewController = MetersViewController.createObject()
         viewController.coordinator = self
         let fetchController = CoreDataManager().fetchResultController
@@ -104,7 +107,7 @@ class AppCoordinator: Coordinator, Sharing {
     
     func closeSettings() {
         navigationControoler.viewControllers.removeAll()
-        showMetersController()
+        showMeters()
     }
     
     func configureNavigationController() {
@@ -113,21 +116,21 @@ class AppCoordinator: Coordinator, Sharing {
         print(safearea)
         let bar = UINavigationBar(frame: CGRect(x: bounds.minX, y: 44/2, width: bounds.width, height: 44))
         
-        let naviGationItem = UINavigationItem(title: "показани счетчиков или ввод новых")
-        let settingsBtn = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(settingsBtnPressed))
+        let naviGationItem = UINavigationItem(title: "Показания счетчиков")
+        let MeterRatesBtn = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(meterRatesBtn))
         
-        let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBtnPressed))
+        let addMeterBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBtnPressed))
         
-        naviGationItem.leftBarButtonItem = settingsBtn
-        naviGationItem.rightBarButtonItem = addBtn
+        naviGationItem.leftBarButtonItem = MeterRatesBtn
+        naviGationItem.rightBarButtonItem = addMeterBtn
         
         bar.setItems([naviGationItem], animated: false)
         self.navigationControoler.view.addSubview(bar)
     }
     
     @objc
-    func settingsBtnPressed() {
-        eventOccured(with: .settingsBtnPressed)
+    func meterRatesBtn() {
+        showMeterRates()
     }
     
     @objc

@@ -27,6 +27,7 @@ protocol MeterRateProtocol {
 /// Сервис работы с настройками
 class MeterRateManager : MeterRateProtocol {
     
+    
     let userDefaults = UserDefaults.standard
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
@@ -89,32 +90,56 @@ class MeterRateManager : MeterRateProtocol {
     }
     
     ///добавляет значение
-    func addRate(_ value: MeterRate) {
+    func addRate(_ newValue: MeterRate) {
         
-        guard let json = try? encoder.encode(value) else {
+        var newMeterRate = newValue
+        print("new date from", newMeterRate.dateFrom)
+        
+        guard let json = try? encoder.encode(newMeterRate) else {
             return
         }
         
-        var settings = getAll()
+        var allRates = getAll()
         
-        if settings[value.meterType] != nil && settings[value.meterType]!.count > 0 {
-            var sorted = settings[value.meterType]!.sorted { (s1, s2) -> Bool in
-                return s2.dateFrom > s1.dateFrom
+        
+            if allRates[newMeterRate.meterType] != nil && allRates[newMeterRate.meterType]!.count > 0 {
+                var sorted = allRates[newMeterRate.meterType]!.sorted { (s1, s2) -> Bool in
+                    return s2.dateFrom > s1.dateFrom
+                }
+                
+                for rate in sorted {
+                    print(rate.dateFrom, rate.dateTo)
+                }
+                
+                let indexBefore = sorted.firstIndex { (rate) -> Bool in
+                    newMeterRate.dateFrom > rate.dateFrom && (rate.dateTo ?? maxDate) > newMeterRate.dateFrom
+                }!
+                
+                let indexAfter = sorted.firstIndex { (rate) -> Bool in
+                    rate.dateFrom > newMeterRate.dateFrom
+                }
+                
+                if let nextIndex = indexAfter  {
+                    newMeterRate.dateTo = sorted[nextIndex].dateFrom
+                }
+                
+                print("d from-to 1: ", sorted[indexBefore].dateFrom, sorted[indexBefore].dateTo)
+                sorted[indexBefore].dateTo = newMeterRate.dateFrom
+                print("d to 2:", sorted[indexBefore].dateTo)
+                sorted.append(newMeterRate)
+                allRates[newMeterRate.meterType] = sorted
             }
-            
-            let index = sorted.firstIndex { (s) -> Bool in
-                value.dateFrom > s.dateFrom && (s.dateTo ?? maxDate) > value.dateFrom
-            }!
-            
-            sorted[index].dateTo = value.dateFrom
-            sorted.append(value)
-            settings[value.meterType] = sorted
-        }
-        else {
-            
-            settings[value.meterType]?.append(value)
-        }
-        setSettings(dict: settings)
+            else {
+//                if !allRates.keys.contains(newMeterRate.meterType) {
+//                    allRates.keys
+//                }
+                
+                allRates[newMeterRate.meterType] = [newMeterRate]
+            }
+        
+        
+        
+        setSettings(dict: allRates)
     }
     
     // MARK: - private

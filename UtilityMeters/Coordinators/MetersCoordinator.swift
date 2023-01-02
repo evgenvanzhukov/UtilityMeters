@@ -10,12 +10,14 @@ import UIKit
 
 class MetersCoordinator : Coordinator {
     
+    var parentCoordinator: Coordinator?
+    
     let coreData = CoreDataManager()
     
     var navigationControoler: UINavigationController
     
-    init(_ navContr: UINavigationController) {
-        self.navigationControoler = navContr
+    init(_ navigationController: UINavigationController) {
+        self.navigationControoler = navigationController
     }
     
     
