@@ -14,10 +14,10 @@ extension CreateAble where Self : UIViewController {
 
 extension UIViewController {
     
-//    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension Array where Element == Meter {

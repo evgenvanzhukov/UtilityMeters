@@ -92,7 +92,9 @@ class DetailViewController: UIViewController, CreateAble, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
+        if Decimal(string: textField.text!) == nil {
+            textField.text = ""
+        }
         textField.textColor = UIColor.black
     }
     

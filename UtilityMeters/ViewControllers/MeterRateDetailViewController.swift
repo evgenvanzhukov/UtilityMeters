@@ -98,7 +98,7 @@ class MeterRateDetailViewController: UIViewController, CreateAble, UITextFieldDe
     
     @objc
     func dateChanged( _ sender: UIDatePicker) {
-        viewModel?.date = sender.date
+        viewModel?.date = Calendar.current.startOfDay(for: sender.date)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
@@ -125,9 +125,6 @@ class MeterRateDetailViewController: UIViewController, CreateAble, UITextFieldDe
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if [rateValueField, rateUnitField].contains(textField) {
-            
-        }
         return true
     }
     
@@ -151,9 +148,4 @@ class MeterRateDetailViewController: UIViewController, CreateAble, UITextFieldDe
             viewModel?.price = Decimal(string: textField.text ?? "0")
         }
     }
-    
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-        }
 }
